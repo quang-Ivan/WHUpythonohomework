@@ -1,5 +1,6 @@
 import math
 
+
 def birth():
     yearOfBirth = int(input('Which year were you born in?'))
     if yearOfBirth > 2022:
@@ -8,9 +9,11 @@ def birth():
         age = 2022 - yearOfBirth
         print(f'In 2022, you were {age}.')
 
+
 def jingyesi():
     print("床前明月光，疑是地上霜。\n\
             举头望明月，低头思故乡。")
+
 
 def sos(x1=0, x2=0):
     '''
@@ -19,7 +22,8 @@ def sos(x1=0, x2=0):
     '''
     x1 = float(x1)
     x2 = float(x2)
-    return x1**2+x2**2
+    return x1 ** 2 + x2 ** 2
+
 
 def ball(r=0):
     '''
@@ -28,9 +32,10 @@ def ball(r=0):
     :return:
     '''
     r = float(r)
-    surface = 4*math.pi*r**2
-    volume = 4/3*math.pi*r**3
+    surface = 4 * math.pi * r ** 2
+    volume = 4 / 3 * math.pi * r ** 3
     print(f"surface = {surface}, volume = {volume}")
+
 
 def solvefunc(a=0, b=0, c=0):
     '''
@@ -43,13 +48,14 @@ def solvefunc(a=0, b=0, c=0):
     a, b, c = float(a), float(b), float(c)
     while a == 0:
         a = float(input("你应该输入不为0的a"))
-    delta = b**2-4*a*c
-    if delta < 0 :
+    delta = b ** 2 - 4 * a * c
+    if delta < 0:
         print("this is a complex func")
-    else :
-        x1 = (-b+math.sqrt(delta))/(2*a)
+    else:
+        x1 = (-b + math.sqrt(delta)) / (2 * a)
         x2 = (-b - math.sqrt(delta)) / (2 * a)
         print(f"x1 = {x1}, x2 = {x2}")
+
 
 def calcvalue(b, r, n):
     """
@@ -60,8 +66,9 @@ def calcvalue(b, r, n):
     :return:
     """
     b, r, n = float(b), float(r), float(n)
-    v = b*(1+r)**n
+    v = b * (1 + r) ** n
     print(v)
+
 
 def rever(a):
     '''
@@ -70,12 +77,11 @@ def rever(a):
     :return:
     '''
     a = list(a)
-    b = ['千位','百位','十位','个位']
-    d = list(zip(b,a))
+    b = ['千位', '百位', '十位', '个位']
+    d = list(zip(b, a))
     while len(a) != 4:
         a = input("you should input four-digit number")
-    for i in range(len(d)-1, -1, -1):
-        print(d[i])
+    print(d[::-1])
 
 
 def main():
@@ -90,9 +96,7 @@ def main():
     # ball(input("radius of ball"))
     # solvefunc(input("a = "), input("b = "), input("c = "))
     # calcvalue(input("b = "), input("r = "), input("n = "))
-    rever(input("input a four-digit number:"))
-
-
+    # rever(input("input a four-digit number:"))
 
 
 if __name__ == '__main__':
