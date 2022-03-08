@@ -112,3 +112,13 @@ def solvtri(*args):
     else:
         print("不构成三角形")
 solvtri(10,7,4)
+
+def fun1single(x):
+    x = float(x)
+    if x>=0:
+        y = (x**2-3*x)/(x+1)+2*math.pi+math.sin(x)
+    elif x<0:
+        y = math.log(-5*x)+6*math.sqrt(abs(x)+math.e**4) - (x+1)**3
+    y = format(y, '.4f')
+    return y
+print(fun1single(8))
