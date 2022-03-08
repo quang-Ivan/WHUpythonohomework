@@ -119,6 +119,6 @@ def fun1single(x):
         y = (x**2-3*x)/(x+1)+2*math.pi+math.sin(x)
     elif x<0:
         y = math.log(-5*x)+6*math.sqrt(abs(x)+math.e**4) - (x+1)**3
-    y = format(y, '.4f')
+    y = format(y, '.4f')   #保留小数点后4位
     return y
 print(fun1single(8))
