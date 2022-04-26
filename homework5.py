@@ -93,29 +93,35 @@ def findprime(n,m):
     :param m: 到哪里结束
     :return:
     '''
-    primefac = [2]
+    primefac = {2}
     t = int(math.sqrt(m))
-    for i in range(2,t+1):
-        for j in primefac:
+    for i in range(3,t+1):
+        for j in primefac:   #对质数表遍历，看i是否为质数
             status = True
-            if i%j!=0:
+            if i%j!=0:       #如果i不能整除所有的j，说明i也是个质数
                 status = True
+            elif i//j==1:      #如果i就是j，说明i就是质数
+                status = True
+                break
             elif i%j==0:
                 status = False
                 break
         if status :
-            primefac.append(i)
-    result =[]
+            primefac.add(i)
+    result = set()
     for i in range(n,m+1):
         for fac in primefac:
             status = True
             if i%fac!=0:
                 status = True
+            elif i//fac==1:
+                status = True
+                break
             elif i%fac==0:
                 status = False
                 break
         if status :
-            result.append(i)
+            result.add(i)
     return result
 
 def getprime(n,m):
@@ -128,7 +134,7 @@ def getprime(n,m):
     s1 = set(range(n,m+1))
     t = int(math.sqrt(m))+1
     for i in range(2,t):
-        s2 = set(range(i,m+1,i))
+        s2 = set(range(2*i,m+1,i))
         s1 = s1-s2
     lst = list(s1)
     lst.sort()
@@ -156,9 +162,9 @@ def main():
     # t = re.findall(r"[0-9]*", tup)
     # meandev(*list(filter(None,t)))
     # rlst()
-    youngtri(20)
-    # print(findprime(1000,2000))
-    # getprime(1000,2000)
+    # youngtri(20)
+    print(sorted(list(findprime(2,32))))
+    # getprime(2,1000)
     # usernum = input("input a set of number, use','or space to split your number")
     # temp = re.findall(r"[0-9]*", usernum)
     # getmaxmin(*list(filter(None,temp)))
