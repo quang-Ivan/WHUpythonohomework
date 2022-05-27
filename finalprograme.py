@@ -73,7 +73,6 @@ def task2():
 def task3():
     '''
     注意先运行taks2()
-    :return:
     '''
     ori = pd.read_excel("Assignment_Data.xlsx", sheet_name="Shortest_Distance")  # header指选哪行作为剩下数据的表头
     com1 = ["以下为最短的10对城市",None,None]
@@ -139,7 +138,7 @@ def task4():
     turtle.done()
 
 def task5():
-    xls = pd.read_excel(r"D:\OneDrive - aierlmalee\whu\python\Assignment_Data.xlsx", sheet_name="CHN144",
+    xls = pd.read_excel("Assignment_Data.xlsx", sheet_name="CHN144",
                         header=None)  # header指选哪行作为剩下数据的表头
     city_names = []
     X_coordinates = []
@@ -152,7 +151,7 @@ def task5():
     coor = [[j * 0.1 for j in i] for i in list(zip(X_coordinates, Y_coordinates))]
     city_info = list(zip(city_names, coor))
     fig = px.scatter(X_coordinates, Y_coordinates)
-    ori = pd.read_excel(r"D:\OneDrive - aierlmalee\whu\python\Assignment_Data.xlsx", sheet_name="Shortest_Distance")  # header指选哪行作为剩下数据的表头
+    ori = pd.read_excel("Assignment_Data.xlsx", sheet_name="Shortest_Distance")  # header指选哪行作为剩下数据的表头
     lst = ori.to_numpy().tolist()
     short = lst[-21:-11]
     long = lst[-10:]
