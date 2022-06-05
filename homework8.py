@@ -31,12 +31,12 @@ def getInfoOfSeq(sequence):
     if not isinstance(sequence,collections.abc.Sequence):
         return None
     else:
-        t = list(sequence)
-        t.sort()
-        length = len(t)
-        print(f"max is {t[length-1]}, min is {t[0]}, length={length}")
-        
-getInfoOfSeq({"TheQuickBrownFox"})
+        length = len(sequence)
+        maxi = max(sequence)
+        mini = min(sequence)
+        return(maxi,mini,length)
+seq = 'TheQuickBrownFox'
+print(getInfoOfSeq(seq))
 
 
 def GetFactor(n):

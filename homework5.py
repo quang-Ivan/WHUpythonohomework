@@ -159,8 +159,8 @@ def getmaxmin(*args):
 def main():
     # collatz(input("the initial number"))
     # tup = input("input a set of number, use','or space to split your number")
-    # t = re.findall(r"[0-9]*", tup)
-    # meandev(*list(filter(None,t)))
+    # t = re.findall(r"[0-9]*", tup)#筛选数字
+    # meandev(*list(filter(None,t)))#过滤空输入
     # rlst()
     # youngtri(20)
     print(sorted(list(findprime(2,32))))
