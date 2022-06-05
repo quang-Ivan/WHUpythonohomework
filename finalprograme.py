@@ -43,7 +43,7 @@ def out_shortest_distance_mat(N, X, Y):
 
 def out_catogeorized_mat():
     xls = pd.read_excel("Assignment_Data.xlsx", sheet_name="CHN144",
-                        header=None)  # header指选哪行作为剩下数据的表头
+                        header=None)  # header指选哪行作为剩下数据的表头 ，路径选填
     aryl = xls.to_numpy().T.tolist()  #表格转置
     city_names = aryl[0]
     X_coordinates = aryl[1]
