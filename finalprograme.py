@@ -68,8 +68,12 @@ def out_catogeorized_mat():
             if i == value:
                 xlls.append(X_coordinates[index])
                 ylls.append(Y_coordinates[index])
-    X_coordinates = list(set(X_coordinates) - set(xss) - set(xlls))
-    Y_coordinates = list(set(Y_coordinates) - set(yss) - set(ylls))
+    '''实现坐标去重且不改变顺序'''
+    N_coor = list(zip(X_coordinates,Y_coordinates))
+    Ex_coor = list(zip(xss,yss))+list(zip(xlls,ylls))#注意最短距离和最长距离中存在南京到扬州和芜湖到南京的例子，在set中被除去
+    N_coor = sorted(list(set(N_coor) - set(Ex_coor)),key = N_coor.index)#这一步可以确保列表中没有重复的坐标对，不使用单独排重，为了防止出现重复的X或Y坐标
+    X_coordinates = np.array(N_coor).T.tolist()[0]
+    Y_coordinates = np.array(N_coor).T.tolist()[1]
     mat = []
     for i in range(len(X_coordinates)):  # 添加normal行
         ad = ['normal']
@@ -86,6 +90,7 @@ def out_catogeorized_mat():
         ad.append(xlls[i])
         ad.append(ylls[i])
         mat.append(ad)
+    # mat = list(set(mat))
     return mat
 
 def task1():
@@ -154,7 +159,7 @@ def task4():
 
     '''初始化turtle'''
     p = turtle.Turtle()
-    turtle.setworldcoordinates(-1000, -1000, 8000, 4000)
+    turtle.setworldcoordinates(0, -4000, 5000, 1000)
     p.pensize(1)
     p.color('red')
     p.st()
@@ -163,15 +168,15 @@ def task4():
     for i in mat:
         if i[0]=='normal':
             p.penup()
-            p.goto(i[1],i[2])
+            p.goto(i[1],-i[2])
             p.dot(5, "red")
         if i[0]=="short":
             p.penup()
-            p.goto(i[1],i[2])
+            p.goto(i[1],-i[2])
             p.dot(5, "green")
         if i[0]=="long":
             p.penup()
-            p.goto(i[1],i[2])
+            p.goto(i[1],-i[2])
             p.dot(5, "blue")
 
     turtle.done()
@@ -182,10 +187,11 @@ def task5():
     使用plotly_express库，按坐标将这144个城市的位置用点表示出。如果需要，请对城市坐标进行适当的变换。将距离最近的10对城市和距离最远的10对城市用不同颜色标识出来。
     '''
     mat = out_catogeorized_mat()
+    for i in mat:
+        i[2] = -i[2]#注意坐标翻转
     data_frame = pd.DataFrame(mat, columns=['category', "x", 'y'])
     fig = px.scatter(data_frame, x="x", y="y", color="category")
     fig.show()
-
 
 if __name__ == '__main__':
     # task1()
@@ -193,4 +199,3 @@ if __name__ == '__main__':
     # task3()
     # task4()
     task5()
-
