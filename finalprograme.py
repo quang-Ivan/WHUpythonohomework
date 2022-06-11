@@ -90,7 +90,6 @@ def out_catogeorized_mat():
         ad.append(xlls[i])
         ad.append(ylls[i])
         mat.append(ad)
-    # mat = list(set(mat))
     return mat
 
 def task1():
